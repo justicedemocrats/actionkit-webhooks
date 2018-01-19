@@ -1,5 +1,6 @@
 defmodule ActionkitWebhooks.AirtableCache do
   use Agent
+  require Logger
 
   @interval 1_000_000
 
