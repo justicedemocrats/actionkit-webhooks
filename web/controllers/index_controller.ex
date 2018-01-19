@@ -27,11 +27,11 @@ defmodule ActionkitWebhooks.IndexController do
   end
 
   def force_update(conn, %{"secret" => input_secret}) do
-    if input_secret == secret()
+    if input_secret == secret() do
       AirtableCache.update()
       text conn, "updated!"
     else
-    text conn, "wrong secret. contact ben"
+      text conn, "wrong secret. contact ben"
     end
   end
 

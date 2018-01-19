@@ -21,7 +21,7 @@ defmodule ActionkitWebhooks.AirtableCache do
       fetch_all()
     end)
 
-    IO.puts("[term codes]: updated at #{inspect(DateTime.utc_now())}")
+    Logger.info("[term codes]: updated at #{inspect(DateTime.utc_now())}")
   end
 
   def get_all do
@@ -35,7 +35,6 @@ defmodule ActionkitWebhooks.AirtableCache do
       ])
 
     decoded = Poison.decode!(body)
-    IO.inspect decoded
 
     records = process_records(decoded["records"])
 
@@ -58,7 +57,7 @@ defmodule ActionkitWebhooks.AirtableCache do
 
     decoded = Poison.decode!(body)
 
-    IO.inspect decoded
+    IO.inspect(decoded)
     new_records = process_records(decoded["records"])
     all_records = Enum.into(records, new_records)
 
@@ -76,7 +75,7 @@ defmodule ActionkitWebhooks.AirtableCache do
     records
     |> Enum.filter(fn %{"fields" => fields} -> Map.has_key?(fields, "Page ID") end)
     |> Enum.map(fn %{"fields" => fields} ->
-      {fields["Page ID"], fields["Endpoint"], fields["Stagger?"] || false}
-     end)
+         {fields["Page ID"], fields["Endpoint"], fields["Stagger?"] || false}
+       end)
   end
 end
