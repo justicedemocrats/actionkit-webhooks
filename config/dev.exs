@@ -33,3 +33,14 @@ config :logger, :console, format: "[$level] $message\n"
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
+
+config :actionkit,
+  base: System.get_env("AK_BASE"),
+  username: System.get_env("AK_USERNAME"),
+  password: System.get_env("AK_PASSWORD")
+
+config :actionkit_webhooks,
+  airtable_key: System.get_env("AIRTABLE_KEY"),
+  airtable_base: System.get_env("AIRTABLE_BASE"),
+  airtable_table_name: System.get_env("AIRTABLE_TABLE_NAME"),
+  secret: "secret"

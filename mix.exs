@@ -35,7 +35,15 @@ defmodule ActionkitWebhooks.Mixfile do
       {:phoenix, "~> 1.3.0-rc"},
       {:phoenix_pubsub, "~> 1.0"},
       {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:short_maps, "~> 0.1.2"},
+      {:httpotion, "~> 3.0.3"},
+      {:poison, "~> 3.1"},
+      {:timex, "~> 3.1"},
+      {:distillery, "~> 1.0.0"},
+      {:actionkit, git: "https://github.com/justicedemocrats/actionkit_ex.git"},
+      {:quantum, ">= 2.2.1"},
+      {:flow, "~> 0.11"}
     ]
   end
 end

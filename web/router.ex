@@ -5,7 +5,9 @@ defmodule ActionkitWebhooks.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", ActionkitWebhooks do
-    pipe_through :api
+  scope "/", ActionkitWebhooks do
+    get "/health", IndexController, :health
+    get "/force-update", IndexController, :force_update
+    get "/list-hooks", IndexController, :list_hooks
   end
 end

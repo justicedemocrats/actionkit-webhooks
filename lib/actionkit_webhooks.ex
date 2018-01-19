@@ -10,12 +10,10 @@ defmodule ActionkitWebhooks do
     children = [
       # Start the endpoint when the application starts
       supervisor(ActionkitWebhooks.Endpoint, []),
-      # Start your own worker by calling: ActionkitWebhooks.Worker.start_link(arg1, arg2, arg3)
-      # worker(ActionkitWebhooks.Worker, [arg1, arg2, arg3]),
+      worker(ActionkitWebhooks.Scheduler, []),
+      worker(ActionkitWebhooks.AirtableCache, [])
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: ActionkitWebhooks.Supervisor]
     Supervisor.start_link(children, opts)
   end
