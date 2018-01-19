@@ -4,6 +4,24 @@ defmodule ActionkitWebhooks.IndexController do
 
   @secret Application.get_env(:actionkit_webhooks, :secret)
 
+  def index(conn, _) do
+    text conn, ~s(
+      hey friends! what's up?
+
+      try visiting this same website, but /health or /list-hooks with a secret.
+
+      there's also /force-update.
+
+      actually, just check out the docs: https://github.com/justicedemocrats/actionkit-webhooks
+
+      isn't it funny that i put the time into typing out this whole message and
+      going way overboard with the documentation, but i didn't put the time
+      into making this an html page so the links would be clickable?
+
+      have a good day! take it easy! bye bye!
+    )
+  end
+
   def health(conn, _) do
     text conn, "i'm healthy! thanks for checking :)"
   end

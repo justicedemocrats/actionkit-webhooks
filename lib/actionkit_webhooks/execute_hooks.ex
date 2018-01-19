@@ -21,8 +21,7 @@ defmodule ActionkitWebhooks.ExecuteHooks do
     Ak.Api.stream("action", query: ~m(page order_by))
     |> Enum.take_while(fn ~m(created_at) ->
       {:ok, in_utc, _} = Ak.Helpers.isoify(created_at) |> DateTime.from_iso8601()
-      # Timex.after?(in_utc, five_minutes_ago)
-      true
+      Timex.after?(in_utc, five_minutes_ago)
     end)
     |> Enum.with_index()
     |> Enum.map(fn {action, idx} ->

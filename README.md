@@ -51,3 +51,8 @@ If you put a page in there twice, it will execute twice! Potentially sending
 it off to 2 different webhooks, if that's what you want. This also means that to
 deprecate old webhooks, you'll actually need to delete the row and wait 5 minutes
 or force an update (you can't overwrite it by adding a new row).
+
+## Deployment
+
+This is configured to use Gigalixir (https://gigalixir.com/). JD people, you can
+use these endpoints by going to https://webhooks.justicedemocrats.com
