@@ -31,9 +31,12 @@ defmodule ActionkitWebhooks.AirtableCache do
 
   defp fetch_all() do
     %{body: body} =
-      HTTPotion.get("https://api.airtable.com/v0/#{base}/#{table}", headers: [
-        Authorization: "Bearer #{key}"
-      ])
+      HTTPotion.get(
+        "https://api.airtable.com/v0/#{base}/#{table}",
+        headers: [
+          Authorization: "Bearer #{key}"
+        ]
+      )
 
     decoded = Poison.decode!(body)
 
@@ -76,7 +79,7 @@ defmodule ActionkitWebhooks.AirtableCache do
     records
     |> Enum.filter(fn %{"fields" => fields} -> Map.has_key?(fields, "Page ID") end)
     |> Enum.map(fn %{"fields" => fields} ->
-         {fields["Page ID"], fields["Endpoint"], fields["Stagger?"] || false}
-       end)
+      {fields["Page ID"], fields["Endpoint"], fields["Stagger?"] || false}
+    end)
   end
 end
