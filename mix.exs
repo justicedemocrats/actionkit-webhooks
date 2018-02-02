@@ -43,7 +43,8 @@ defmodule ActionkitWebhooks.Mixfile do
       {:distillery, "~> 1.0.0"},
       {:actionkit, git: "https://github.com/justicedemocrats/actionkit_ex.git"},
       {:quantum, ">= 2.2.1"},
-      {:flow, "~> 0.11"}
+      {:flow, "~> 0.11"},
+      {:airtable_config, git: "https://github.com/justicedemocrats/airtable_config.git"}
     ]
   end
 end
