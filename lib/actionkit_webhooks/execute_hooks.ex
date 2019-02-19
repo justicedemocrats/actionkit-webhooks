@@ -49,7 +49,7 @@ defmodule ActionkitWebhooks.ExecuteHooks do
         map_body = Map.merge(~m(email first_name last_name phone created_at), fields)
         to_post = Poison.encode!(map_body)
         Logger.info("#{page} -> #{endpoint}: #{inspect(map_body)}")
-        HTTPotion.post(endpoint, body: to_post)
+        HTTPotion.post(endpoint, body: to_post, headers: ["Content-Type": "application/json"])
       end)
     end)
 
