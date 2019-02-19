@@ -21,12 +21,12 @@ config :actionkit_webhooks, ActionkitWebhooks.Endpoint,
 config :logger, level: :info
 
 config :actionkit,
-  base: "${AK_BASE}",
-  username: "${AK_USERNAME}",
-  password: "${AK_PASSWORD}"
+  base: System.get_env("AK_BASE"),
+  username: System.get_env("AK_USERNAME"),
+  password: System.get_env("AK_PASSWORD")
 
 config :actionkit_webhooks,
-  airtable_key: "${AIRTABLE_KEY}",
-  airtable_base: "${AIRTABLE_BASE}",
-  airtable_table_name: "${AIRTABLE_TABLE_NAME}",
-  secret: "${UPDATE_SECRET}"
+  airtable_key: System.get_env("AIRTABLE_KEY"),
+  airtable_base: System.get_env("AIRTABLE_BASE"),
+  airtable_table_name: System.get_env("AIRTABLE_TABLE_NAME"),
+  secret: System.get_env("SECRET")
