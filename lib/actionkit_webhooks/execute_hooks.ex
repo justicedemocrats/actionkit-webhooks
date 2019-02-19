@@ -15,7 +15,7 @@ defmodule ActionkitWebhooks.ExecuteHooks do
   end
 
   def execute({page, endpoint, should_stagger}) do
-    five_minutes_ago = Timex.shift(Timex.now(), minutes: -5)
+    five_minutes_ago = Timex.shift(Timex.now(), minutes: -1)
     order_by = "-created_at"
 
     Ak.Api.stream("action", query: ~m(page order_by))

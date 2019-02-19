@@ -20,7 +20,7 @@ config :logger, :console,
 config :actionkit_webhooks, ActionkitWebhooks.Scheduler,
   jobs: [
     {"*/5 * * * *", {ActionkitWebhooks.AirtableCache, :update, []}},
-    {"*/5 * * * *", {ActionkitWebhooks.ExecuteHooks, :execute_all, []}}
+    {"*/1 * * * *", {ActionkitWebhooks.ExecuteHooks, :execute_all, []}}
   ]
 
 # Import environment specific config. This must remain at the bottom
